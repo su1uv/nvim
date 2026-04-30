@@ -52,6 +52,7 @@ Wait until done, quit, reopen.
     ├── oil.lua           -- file explorer
     ├── statusline.lua    -- lualine in tabline
     ├── telescope.lua     -- fuzzy finder
+    ├── toggleterm.lua    -- integrated terminal
     └── treesitter.lua    -- syntax + folds
 ```
 
@@ -73,6 +74,7 @@ Wait until done, quit, reopen.
 | `indent-blankline.nvim` | Indent guides |
 | `Comment.nvim` | `gcc` / `gc` comments |
 | `render-markdown.nvim` | Markdown rendering |
+| `toggleterm.nvim` | Integrated terminal |
 
 ## LSP servers (auto via Mason)
 
@@ -104,6 +106,10 @@ Leader = `<Space>`.
 | `<leader>b` | Buffers |
 | `<leader>qq` | Quit all |
 | `-` | Open parent dir (oil) |
+| `<C-\>` | Toggle terminal |
+| `<leader>tf` | Float terminal |
+| `<leader>th` | Horizontal terminal |
+| `<leader>tv` | Vertical terminal |
 
 ### LSP (on attach)
 
