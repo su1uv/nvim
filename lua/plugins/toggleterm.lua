@@ -2,6 +2,8 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     config = function()
+        vim.opt.splitright = true
+
         require("toggleterm").setup({
             size = function(term)
                 if term.direction == "horizontal" then
@@ -17,7 +19,7 @@ return {
             terminal_mappings = true,
             persist_size = true,
             persist_mode = true,
-            direction = "float",
+            direction = "vertical",
             close_on_exit = true,
             float_opts = {
                 border = "single",
