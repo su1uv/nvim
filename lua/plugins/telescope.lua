@@ -7,10 +7,10 @@ return {
     config = function()
         require("telescope").setup({
             defaults = {
-                borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+                borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
                 layout_strategy = "horizontal",
-                prompt_prefix = "> ",
-                selection_caret = "  ",
+                prompt_prefix = " ",
+                selection_caret = " ",
                 sorting_strategy = "ascending",
                 layout_config = {
                     prompt_position = "top",
@@ -23,6 +23,16 @@ return {
                 },
             },
         })
+
+        local hl = vim.api.nvim_set_hl
+        hl(0, "TelescopeBorder", { fg = "#403d52", bg = "NONE" })
+        hl(0, "TelescopePromptBorder", { fg = "#c4a7e7", bg = "NONE" })
+        hl(0, "TelescopeResultsBorder", { fg = "#403d52", bg = "NONE" })
+        hl(0, "TelescopePreviewBorder", { fg = "#403d52", bg = "NONE" })
+        hl(0, "TelescopeTitle", { fg = "#c4a7e7", bold = true })
+        hl(0, "TelescopePromptPrefix", { fg = "#c4a7e7" })
+        hl(0, "TelescopeMatching", { fg = "#ebbcba", bold = true })
+        hl(0, "TelescopeSelection", { fg = "#e0def4", bg = "#1f1d2e", bold = true })
 
         local builtin = require("telescope.builtin")
         vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Find files" })

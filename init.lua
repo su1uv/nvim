@@ -19,6 +19,8 @@ vim.opt.updatetime = 250
 vim.opt.cursorline = true
 vim.opt.showmode = false
 vim.opt.laststatus = 0
+vim.opt.fillchars = { eob = " " }
+vim.opt.winborder = "rounded"
 
 -- Keybinds globales
 vim.keymap.set("n", "<leader><leader>", function() require("telescope.builtin").find_files() end, { desc = "Find files" })
@@ -40,3 +42,9 @@ require("lazy").setup("plugins", {
     change_detection = { notify = false },
 })
 
+
+require('nvim-treesitter').install { 'rust', 'javascript', 'zig', 'python', 'go', 'html', 'make', 'toml', 'sql' }
+
+vim.api.nvim_create_autocmd('FileType', {
+    callback = function() pcall(vim.treesitter.start) end,
+})

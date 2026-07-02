@@ -1,31 +1,9 @@
 return {
     "nvim-lualine/lualine.nvim",
     config = function()
-        local custom_theme = {
-            normal = {
-                a = { bg = "#1a1a1a", fg = "#ffffff", gui = "bold" },
-                b = { bg = "#000000", fg = "#888888" },
-                c = { bg = "#000000", fg = "#555555" },
-            },
-            insert = {
-                a = { bg = "#1a1a1a", fg = "#98c379", gui = "bold" },
-            },
-            visual = {
-                a = { bg = "#1a1a1a", fg = "#61afef", gui = "bold" },
-            },
-            command = {
-                a = { bg = "#1a1a1a", fg = "#e5c07b", gui = "bold" },
-            },
-            inactive = {
-                a = { bg = "#000000", fg = "#333333" },
-                b = { bg = "#000000", fg = "#333333" },
-                c = { bg = "#000000", fg = "#333333" },
-            },
-        }
-
         require("lualine").setup({
             options = {
-                theme = custom_theme,
+                theme = "auto",
                 icons_enabled = false,
                 component_separators = { left = "", right = "" },
                 section_separators = { left = "", right = "" },

@@ -6,7 +6,7 @@ return {
             formatters_by_ft = {
                 lua        = { "stylua" },
                 -- Confo    rm will run multiple formatters sequentially
-                python     = { "isort", "black" },
+                python     = { "ruff_format", "ruff_organize_imports" },
                 -- You can custo    mize some of the format options for the filetype (:help conform.format)
                 rust       = { "rustfmt", lsp_format = "fallback" },
                 -- Conform will run the first available formatter
