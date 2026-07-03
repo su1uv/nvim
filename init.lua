@@ -23,28 +23,34 @@ vim.opt.fillchars = { eob = " " }
 vim.opt.winborder = "rounded"
 
 -- Keybinds globales
-vim.keymap.set("n", "<leader><leader>", function() require("telescope.builtin").find_files() end, { desc = "Find files" })
+vim.keymap.set("n", "<leader><leader>", function()
+	require("telescope.builtin").find_files()
+end, { desc = "Find files" })
 vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit neovim" })
 
 -- Bootstrap lazy.nvim (plugin manager)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git", "clone", "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", lazypath,
-    })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
-    ui = { border = "single" },
-    change_detection = { notify = false },
+	ui = { border = "single" },
+	change_detection = { notify = false },
 })
 
+require("nvim-treesitter").install({ "rust", "javascript", "zig", "python", "go", "html", "make", "toml", "sql" })
 
-require('nvim-treesitter').install { 'rust', 'javascript', 'zig', 'python', 'go', 'html', 'make', 'toml', 'sql' }
-
-vim.api.nvim_create_autocmd('FileType', {
-    callback = function() pcall(vim.treesitter.start) end,
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function()
+		pcall(vim.treesitter.start)
+	end,
 })
